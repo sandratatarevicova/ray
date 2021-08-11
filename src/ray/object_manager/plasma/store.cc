@@ -193,7 +193,7 @@ void PlasmaStore::AddToClientObjectIds(const ObjectID &object_id,
   if (client->object_ids.find(object_id) != client->object_ids.end()) {
     return;
   }
-  object_lifecycle_mgr_.AddReference(object_id);
+  RAY_CHECK(object_lifecycle_mgr_.AddReference(object_id));
   // Add object id to the list of object ids that this client is using.
   client->object_ids.insert(object_id);
 }
@@ -476,7 +476,7 @@ int PlasmaStore::AbortObject(const ObjectID &object_id,
     return 0;
   }
   // The client requesting the abort is the creator. Free the object.
-  RAY_CHECK(object_lifecycle_mgr_.AbortObject(object_id));
+  RAY_CHECK(object_lifecycle_mgr_.AbortObject(object_id) == PlasmaError::OK);
   client->object_ids.erase(it);
   return 1;
 }
