@@ -39,6 +39,11 @@ spec:
           - name: dshm
             emptyDir:
               medium: Memory
+          {{- range $volume := .persistentVolumes }}
+          - name: {{ $volume.claimName }}
+            persistentVolumeClaim:
+              claimName: {{ $volume.claimName }}
+          {{- end }}
           containers:
           - name: ray-node
             imagePullPolicy: Always
@@ -59,6 +64,18 @@ spec:
             volumeMounts:
             - mountPath: /dev/shm
               name: dshm
+            {{- range $volume := .persistentVolumes }}
+            {{- range $mount := $volume.mounts }}
+            - name: {{ $volume.claimName }}
+              mountPath: {{ $mount.mountPath }}
+              {{- if $mount.subPath }}
+              subPath: {{ $mount.subPath }}
+              {{- end }}
+              {{- if $mount.readOnly }}
+              readOnly: {{ $mount.readOnly }}
+              {{- end }}
+            {{- end }}
+            {{- end }}
             resources:
               requests:
                 cpu: {{ .CPU }}

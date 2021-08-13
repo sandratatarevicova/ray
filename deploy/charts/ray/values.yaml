@@ -31,6 +31,8 @@ podTypes:
         rayResources: {}
         # Optionally, set a node selector for this podType: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector
         nodeSelector: {}
+        # PersistentVolumeClaim mounts
+        persistentVolumes: []
     # The key for each podType is a user-defined string.
     rayWorkerType:
         # minWorkers is the minimum number of Ray workers of this pod type to keep running.
@@ -53,6 +55,8 @@ podTypes:
         rayResources: {}
         # Optionally, set a node selector for this Pod type. See https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector
         nodeSelector: {}
+        # PersistentVolumeClaim mounts
+        persistentVolumes: []
 
 
 # Operator settings:
