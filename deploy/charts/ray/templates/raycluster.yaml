@@ -54,9 +54,10 @@ spec:
             args: ['trap : TERM INT; sleep infinity & wait;']
             ports:
             - containerPort: 6379  # Redis port
-            - containerPort: 10001  # Used by Ray Client
+            - containerPort: 10001 # Used by Ray Client
             - containerPort: 8265  # Used by Ray Dashboard
-            - containerPort: 8000 # Used by Ray Serve
+            - containerPort: 8000  # Used by Ray Serve
+            - containerPort: 54399 # Metrics
 
             # This volume allocates shared memory for Ray to use for its plasma
             # object store. If you do not provide this, Ray will fall back to
