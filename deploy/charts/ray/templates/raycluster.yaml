@@ -98,6 +98,10 @@ spec:
           nodeSelector:
               {{- toYaml .nodeSelector | nindent 12 }}
           {{- end }}
+          {{- if .tolerations }}
+          tolerations:
+              {{- toYaml .tolerations | nindent 12 }}
+          {{- end }}
     {{- end }}
   # Commands to start Ray on the head node. You don't need to change this.
   # Note dashboard-host is set to 0.0.0.0 so that Kubernetes can port forward.

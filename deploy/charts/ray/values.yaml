@@ -31,6 +31,8 @@ podTypes:
         rayResources: {}
         # Optionally, set a node selector for this podType: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector
         nodeSelector: {}
+        # Optionally, set a tolerations for this podType: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration
+        tolerations: {}
         # PersistentVolumeClaim mounts
         persistentVolumes: []
     # The key for each podType is a user-defined string.
@@ -53,6 +55,8 @@ podTypes:
         # For example, rayResources: {"CPU": 0} can be used in the head podType to prevent Ray from scheduling tasks on the head.
         # See https://docs.ray.io/en/master/advanced.html#dynamic-remote-parameters for an example of usage of custom resources in a Ray task.
         rayResources: {}
+        # Optionally, set a tolerations for this podType: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration
+        tolerations: {}
         # Optionally, set a node selector for this Pod type. See https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector
         nodeSelector: {}
         # PersistentVolumeClaim mounts
