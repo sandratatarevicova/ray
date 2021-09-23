@@ -58,8 +58,10 @@ spec:
             - containerPort: 8265  # Used by Ray Dashboard
             - containerPort: 8000  # Used by Ray Serve
             - containerPort: 54399 # Metrics
-            {{- if eq $key $.Values.headPodType }}
             env:
+            - name: TZ
+              value: UTC
+            {{- if eq $key $.Values.headPodType }}
             # Set max autoscaler number of failures to infinity to prevent
             # unexpected autoscaler crashes.
             - name: AUTOSCALER_MAX_NUM_FAILURES
