@@ -50,6 +50,8 @@ spec:
         image: {{ .Values.operatorImage }}
         command: ["ray-operator"]
         env:
+        - name: TZ
+          value: UTC
         - name: RAY_OPERATOR_POD_NAMESPACE
           valueFrom:
             fieldRef:

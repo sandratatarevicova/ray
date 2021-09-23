@@ -53,6 +53,8 @@ spec:
         image: {{ .Values.operatorImage }}
         command: ["ray-operator"]
         env:
+        - name: TZ
+          value: UTC
         - name: AUTOSCALER_MAX_NUM_FAILURES
           value: "inf"
         resources:
