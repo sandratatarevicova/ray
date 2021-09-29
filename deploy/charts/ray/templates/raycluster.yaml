@@ -67,6 +67,8 @@ spec:
             - name: AUTOSCALER_MAX_NUM_FAILURES
               value: inf
             {{- end }}
+            - name: RAY_BACKEND_LOG_LEVEL
+              value: fatal
             # This volume allocates shared memory for Ray to use for its plasma
             # object store. If you do not provide this, Ray will fall back to
             # /tmp which cause slowdowns if is not a shared memory volume.
