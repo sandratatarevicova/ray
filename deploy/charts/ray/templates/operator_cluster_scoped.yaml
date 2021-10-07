@@ -74,6 +74,7 @@ spec:
             - python
             - /worker_heartbeat.py
           failureThreshold: 1
+          initialDelaySeconds: 600
           periodSeconds: 900
           timeoutSeconds: 240
 {{- end }}
