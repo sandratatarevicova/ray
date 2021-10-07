@@ -58,6 +58,10 @@ spec:
               fieldPath: metadata.namespace
         - name: AUTOSCALER_MAX_NUM_FAILURES
           value: "inf"
+        - name: RAY_CLUSTER_ADDRESS
+          value: ray-ray-head.{{ .Values.operatorNamespace }}.svc.cluster.local
+        - name: RAY_CLUSTER_PORT
+          value: "10001"
         resources:
           requests:
             cpu: 1
