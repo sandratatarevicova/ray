@@ -68,4 +68,11 @@ spec:
           limits:
             memory: 2Gi
             cpu: 1
+        livenessProbe:
+          exec:
+            command:
+            - python
+            - /worker_heartbeat.py
+          failureThreshold: 1
+          periodSeconds: 900
 {{- end }}
