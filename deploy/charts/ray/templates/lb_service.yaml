@@ -14,6 +14,10 @@ spec:
     protocol: TCP
     targetPort: 54399
     name: metrics
+  - port: 10001
+    protocol: TCP
+    targetPort: 10001
+    name: client
   selector:
     ray-node-type: head
     ray-cluster-name: {{ .Release.Name }}{{ .Values.clusterNameSuffix }}
