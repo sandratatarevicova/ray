@@ -66,6 +66,8 @@ spec:
             # unexpected autoscaler crashes.
             - name: AUTOSCALER_MAX_NUM_FAILURES
               value: inf
+            - name: PYTHONFAULTHANDLER
+              value: "true"
             {{- end }}
             - name: RAY_BACKEND_LOG_LEVEL
               value: fatal
