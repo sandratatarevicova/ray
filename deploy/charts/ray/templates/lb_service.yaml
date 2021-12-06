@@ -6,10 +6,6 @@ spec:
   loadBalancerSourceRanges:
   {{- toYaml .Values.headNodeServiceAllowedRanges | nindent 2 }}
   ports:
-  - port: 8265
-    protocol: TCP
-    targetPort: 8265
-    name: dashboard
   - port: 54399
     protocol: TCP
     targetPort: 54399
@@ -18,6 +14,10 @@ spec:
     protocol: TCP
     targetPort: 10001
     name: client
+  - port: 6379
+    protocol: TCP
+    targetPort: 6379
+    name: redis
   selector:
     ray-node-type: head
     ray-cluster-name: {{ .Release.Name }}{{ .Values.clusterNameSuffix }}
