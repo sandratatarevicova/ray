@@ -106,6 +106,10 @@ spec:
                 {{- if .GPU }}
                 nvidia.com/gpu: {{ .GPU }}
                 {{- end }}
+            securityContext:
+              capabilities:
+                add:
+                - SYS_PTRACE
           {{- if .nodeSelector }}
           nodeSelector:
               {{- toYaml .nodeSelector | nindent 12 }}
